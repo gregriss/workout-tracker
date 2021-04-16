@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const mongojs = require('mongojs');
+const db = require('./models');
 const logger = require('morgan');
 const path = require('path');
 const PORT = process.env.PORT || 8080;
@@ -27,10 +27,6 @@ const collections = ['workouts'];
 //     console.log("Database Error:", error);
 // });
 
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness", {
-//     useNewUrlParser: true,
-//     useFindAndModify: false
-// });
 
 app.listen(PORT, function() {
     console.log('App listening at http://localhost:' + PORT);
