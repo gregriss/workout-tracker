@@ -12,9 +12,9 @@ const ExerciseSchema = new Schema({
     sets: Number
 });
 
-const Exercise = mongoose.model('Exercise', ExerciseSchema);
+// const Exercise = mongoose.model('Exercise', ExerciseSchema);
 
-module.exports = Exercise;
+// module.exports = Exercise;
 
 
 // trim: true,
