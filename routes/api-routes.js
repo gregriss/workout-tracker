@@ -26,7 +26,7 @@ const db = require('../models/modelObjects');
         });
     });
 
-    // route to add exercises to lastWorkout (most recent workout)
+    // route to add exercises to lastWorkout, or to new workout
     router.put('/api/workouts/:id', (req, res) => {
         db.Workout.findOneAndUpdate({ _id: req.params.id }, { $push: { exercises: req.body } })
         .then(dbWorkout => {
@@ -38,25 +38,18 @@ const db = require('../models/modelObjects');
         });
     });
 
-    // Route use to add new exercises to a new workout plan.
-    // this is a PUT method?, but will be router.post in mongoose?
-    // i think I need 2 different routes
-
-    // router.post('/api/workouts', ({ body }, res) => {
-    //     // create the workout
-    //     db.Workout.create(body)
-    //     // add workout id 
-    //     .then(({_id}) => db.Workout.findOneAndUpdate({}, { $push: { exercises: _id } }, { new: true }))
-    //         console.log(dbWorkout)
-    //         res.json(dbWorkout);
-
-    //     .then(dbWorkout => {
-    //         res.json(dbWorkout);
-    //     })
-    //     .catch(err => {
-    //         res.status(400).json(err);
-    //     });
-    // });
+    // route to add a new workout
+    router.post('/api/workouts', ({ body }, res) => {
+        // create the workout
+        db.Workout.create(body)
+        // send json response
+        .then(dbWorkout => {
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        });
+    });
 
     // Route used to view the combined weight of multiple exercises from the past 7 workouts on the `stats` page.
 
