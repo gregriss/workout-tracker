@@ -2,24 +2,33 @@ const router = require('express').Router();
 const db = require('../models/modelObjects');
 
     // Route used to add exercises to the most recent workout plan
-    // get most recent workout
+    // get most recent workout/with total from all exercises
     // then need to add an exercise to that workout 
    
     router.get('/api/workouts', (req, res) => {
-        db.Workout.find({})
+        // db.Workout.find({})
             // .populate('exercises')
-            .then(dbWorkout => {
-                // console.log('dbWorkout:' + dbWorkout);
-                res.json(dbWorkout);
-            })
-            .catch(err => {
-                res.status(400).json(err);
-            });
+        db.Workout.aggregate(
+            [
+                {
+                    $addFields: {
+                        totalDuration: { $sum: "$exercises.duration" }
+                    }
+                }
+            ]
+        ) 
+        .then(dbWorkout => {
+            // console.log('dbWorkout:' + dbWorkout);
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        });
     });
 
     // route to add exercises to lastWorkout (most recent workout)
     router.put('/api/workouts/:id', (req, res) => {
-        db.Workout.findOneAndUpdate({ _id: req.params.id }, { $push: { exercises: req.body } }) // {{ new: true }}
+        db.Workout.findOneAndUpdate({ _id: req.params.id }, { $push: { exercises: req.body } })
         .then(dbWorkout => {
             console.log(dbWorkout);
             res.json(dbWorkout);
