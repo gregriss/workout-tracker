@@ -19,7 +19,7 @@ const db = require('../models/modelObjects');
     router.get('/api/workouts', (req, res) => {
 
         db.Workout.find({})
-            .populate('exercises')
+            // .populate('exercises')
             .then(dbWorkout => {
                 console.log('dbWorkout:' + dbWorkout);
                 res.json(dbWorkout);
