@@ -11,21 +11,9 @@ const WorkoutSchema = new Schema(
     },
     exercises: [
         {
-        type: String,
-        name: String,
-        duration: Number,
-        distance: Number,
-        weight: Number,
-        reps: Number,
-        sets: Number,
-        trim: true,
-        required: "Enter Exercise Name"
-    }],
-    length: {
-        type: Number,
-        required: "Enter a length of time"
-    }
+        type: Schema.Types.ObjectId,
 
+    }]
 });
 
 WorkoutSchema.methods.newMethod = function(){
