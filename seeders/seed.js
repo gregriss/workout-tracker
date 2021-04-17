@@ -1,18 +1,18 @@
 let mongoose = require("mongoose");
-let db = require("../models");
+let db = require("../models/modelObjects");
 
-if(process.env.MONGO_ATLAS.length > 0){
-  mongoose.connect(process.env.MONGO_ATLAS, {
-    useNewUrlParser: true,
-    useFindAndModify: false
-  })
-} else {
+// if(process.env.MONGO_ATLAS.length > 0){
+//   mongoose.connect(process.env.MONGO_ATLAS, {
+//     useNewUrlParser: true,
+//     useFindAndModify: false
+//   })
+// } else {
 
   mongoose.connect("mongodb://localhost/workout", {
     useNewUrlParser: true,
     useFindAndModify: false
   });
-}
+// }
 
 let workoutSeed = [
   {
@@ -142,3 +142,11 @@ db.Workout.deleteMany({})
     console.error(err);
     process.exit(1);
   });
+
+  // db.Exercise.deleteMany({})
+  //   .then(() => {
+  //     console.log('Exercises Deleted')
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
