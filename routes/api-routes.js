@@ -54,36 +54,13 @@ const db = require('../models/modelObjects');
     // Route used to view the combined weight of multiple exercises from the past 7 workouts on the `stats` page.
 
 
-
-    // route 
-    // router.get('/api/workouts', (req, res) => {
-    //     // db.Workout.find({})
-    //     // .sort({ date: -1 })
-    //     db.Workout.aggregate(
-    //         [
-    //             {
-    //                 $addFields: {
-    //                     totalduration: { $sum: "$exercises.duration" }
-    //                 }
-    //             }
-    //         ]
-    //     )
-    //     .then(dbWorkout => {
-    //         console.log(dbWorkout);
-    //         res.json(dbWorkout);
-    //     })
-    //     .catch(err => {
-    //         res.status(400).json(err);
-    //     });
-    // });
-
-    // Route used to view the total duration of each workout from past 7 workouts on `stats.html` page
+    // Route used to view the total duration of each workout from past 7 days on `stats.html` page
     router.get('/api/workouts/range', (req, res) => {
         db.Workout.aggregate(
             [
                 {
                     $addFields: {
-                        totalduration: { $sum: "$exercises.duration" }
+                        totalDuration: { $sum: "$exercises.duration" }
                     }
                 }
             ]
