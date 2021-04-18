@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const db = require('../models/ModelObjects.js');
+const db = require('../models/modelObjects.js');
 
     // Route used to add exercises to the most recent workout plan
     // get most recent workout/with total from all exercises
