@@ -52,7 +52,7 @@ const db = require('../models/modelObjects');
     });
 
     // Route used to view the combined weight of multiple exercises from the past 7 workouts on the `stats` page.
-
+    
 
     // Route used to view the total duration of each workout from past 7 days on `stats.html` page
     router.get('/api/workouts/range', (req, res) => {
