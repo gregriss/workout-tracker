@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const db = require('./models/modelObjects.js');
+// const db = require('./models');
 const logger = require('morgan');
 
 // const MONGO = process.env.MONGO_ATLAS;
