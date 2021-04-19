@@ -26,7 +26,7 @@ This app allows the user to track their workouts by adding multiple exercises to
 
 Deployed App: https://afternoon-thicket-58407.herokuapp.com/  
 
-![Homepage](assets/home-screenshot.png)  
+![Homepage](public/assets/home-screenshot.png)  
 
 Upon Accessing the page, stats and info from your Last Workout are displayed, and you're given the option either to `Continue Workout` or Start a `New Workout`. After entering the info for your exercise, you can add it to the workout and then add more exercises or choose to complete the workout. Completed workouts can be seen on the Stats page, accessed by clicking the `Dashboard` button in the upper left corner.  
 
